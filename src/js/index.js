@@ -1,5 +1,7 @@
 import Recipe from './models/Recipe';
 import Search from './models/Search';
+import List from './models/List';
+
 import { elements, renderLoader, clearLoader } from './views/base';
 import * as recipeView from './views/recipeView';
 import * as searchView from './views/searchView';
@@ -67,7 +69,6 @@ elements.searchResPages.addEventListener('click', e => {
 const controlRecipe = async () => {
     // get ID from url
     const id = window.location.hash.replace('#', '');
-    console.log(id);
 
     if (id) {
         // prepare UI for changes
@@ -120,6 +121,7 @@ elements.recipe.addEventListener('click', e => {
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
     }
-
-    console.log(state.recipe);
 });
+
+
+window.l = new List();
