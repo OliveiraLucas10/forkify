@@ -10,10 +10,7 @@ import * as searchView from './views/searchView';
  * - SHopping list object
  * - Liked recipes
  */
-const state = {
-    search: {},
-    recipe: {}
-};
+const state = {};
 
 /**
  * SEARCH CONTROLLER
@@ -76,6 +73,9 @@ const controlRecipe = async () => {
         // prepare UI for changes
         recipeView.clearRecipe();
         renderLoader(elements.recipe);
+
+        //Highlight selected search item
+        if (state.search) searchView.highlighSelected(id);
 
         // create new ripe object
         state.recipe = new Recipe(id);
