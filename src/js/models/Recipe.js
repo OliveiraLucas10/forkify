@@ -25,11 +25,11 @@ export default class Recipe {
         const numIng = this.ingredients.length;
         const periods = Math.ceil(numIng / 3);
         this.time = periods * 15;
-    }
+    };
 
     calcServings() {
         this.servings = 4;
-    }
+    };
 
     parseIngredients() {
         const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cup', 'pounds'];
@@ -87,7 +87,20 @@ export default class Recipe {
             }
 
             return objIng;
-        });
+        })
+
         this.ingredients = newIngredients;
-    }
+    };
+
+    updateServings(type){
+        // servings
+        const newServings = type === 'dec' ? this.servings - 1 : this.servings + 1;
+
+        //ingredients
+        this.ingredients.forEach(ing => {
+            ing.count *= (newServings / this.servings);
+        });
+
+        this.servings = newServings;
+    };
 };
