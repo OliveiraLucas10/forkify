@@ -14,11 +14,11 @@ export default class Like {
         this.likes.splice(index, 1);
     };
 
-    isLike(id) {
-        return this.likes.forEach(el => el.id === id) !== -1;
+    isLiked(id) {
+        return this.likes.findIndex (el => el.id === id) !== -1;
     };
 
-    getNumLikes(){
+    getNumLikes() {
         return this.likes.length;
     };
 };
